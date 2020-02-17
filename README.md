@@ -9,6 +9,9 @@
 ## You're supposed to modify the following files
 - [callout.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/callout.c#L53-L91)
 
+## One-line synopsis of this project
+Implement the 3 functions in [callout.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/callout.c#L53-L91) so that [kernel.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/kernel.c#L47-L82) will act like an operating system calling functions at specified time.
+
 ## Concepts to Know (Written by Grant Hoover)
 
 **Problem:** We want programs (or simple routines/functions) to run at specific times and, sometimes, at regular intervals.
