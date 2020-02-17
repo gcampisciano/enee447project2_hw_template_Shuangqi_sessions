@@ -1,4 +1,18 @@
-# Project 2 - Concepts to Know
+# ENEE447 Project 2
+
+
+## Environment setup
+- SD card: format it to be FAT32 if you haven't done so
+- 32-bit cross-compiler:
+	follow the setup in [project 1](https://github.com/sklaw/enee447project1_hw_template) if you haven't done so
+    
+## You're supposed to modify the following files
+- [callout.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/callout.c#L53-L91)
+
+## One-line synopsis of this project
+Implement the 3 functions in [callout.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/callout.c#L53-L91) so that [kernel.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/kernel.c#L47-L82) will act like an operating system calling functions at specified time.
+
+## Concepts to Know (Written by Grant Hoover)
 
 **Problem:** We want programs (or simple routines/functions) to run at specific times and, sometimes, at regular intervals.
 
@@ -17,7 +31,7 @@ Possible solutions:
 2. Use a dynamic list of tasks to be run and times at which to run them.
    This is called a “callout table” in UNIX or a “timeout queue” generally.
 
-## Timeout Queue Implementation
+### Timeout Queue Implementation
 
 We can use a linked list to keep track of these tasks.
 
@@ -63,7 +77,7 @@ This way, we know that everything past Z in the list will execute after Z. If we
 Another reason for using relative times: When we check the time, we only need to update the time value of the HEAD to reflect the amount of time *until* it should run.
 
 
-## Functions
+### Functions
 
 `int bring_timeoutq_current()`
    
@@ -79,8 +93,14 @@ Another reason for using relative times: When we check the time, we only need to
 
 Kernel *while()* loop now checks the amount of time until the next event should run, waits for that time, and then handles the next event.
 
-## Important Notes
+### Important Notes
 
 Function pointers take event pointers as arguments.
 
 **Remember to check for empty lists and null pointers!**
+
+
+
+
+
+
