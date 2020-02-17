@@ -1,0 +1,9 @@
+*.o
+*.bin
+*.elf
+*.list
+*.auto
+*.img
+!things_to_copy_to_your_sd_card/bootcode.bin
+!things_to_copy_to_your_sd_card/start.elf
+.*.swp
