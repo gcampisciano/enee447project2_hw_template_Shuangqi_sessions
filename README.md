@@ -11,6 +11,8 @@
 
 ## One-line synopsis of this project
 Implement the 3 functions in [callout.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/callout.c#L53-L91) so that [kernel.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/kernel.c#L47-L82) will act like an operating system calling functions at specified time.
+- Optional extra credits: read [p2.pdf](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/p2.pdf) for details.
+
 
 ## Concepts to Know (Written by Grant Hoover)
 
