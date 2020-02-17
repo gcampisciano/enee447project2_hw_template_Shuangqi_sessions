@@ -14,9 +14,9 @@ Implement the 3 functions in [callout.c](https://github.com/sklaw/enee447project
 - Optional extra credits: read [p2.pdf](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/p2.pdf) for details.
 
 ## Recommended Readings
-- [p2.pdf](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/p2.pdf) for details.
 - [list.h](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/llist.h): so you know how to use linked list for this project. You can also find some usage of the list library [here in callout.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/callout.c#L33-L50)
 - [log.h](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/log.h): you can find some debug/logging utilities that you may need when you debug your program on board. Some usages of debug/logging can be found in [kernel.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/kernel.c)
+- [p2.pdf](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/p2.pdf)
 
 ## How to test your solution
 - Compile this code with `make` command, copy the files (not the folder) in `things_to_copy_to_your_sd_card` to your SD card
