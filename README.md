@@ -16,7 +16,10 @@ Implement the 3 functions in [callout.c](https://github.com/sklaw/enee447project
 ## How to test your solution
 - Compile this code with `make` command, copy the files (not the folder) in `things_to_copy_to_your_sd_card` to your SD card
 - Setup UART communication like you did for [project 1](https://github.com/sklaw/enee447project1_hw_template) (so you can receive debug messages sent from the board)
-- Boot your board, if the UART messages indicate the events are happenning in accordance with `create_timeoutq_event` calls in [kernel.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/kernel.c#L48-L62), then your solution is good!
+- Boot your board, if the UART messages indicate the events are happenning in accordance with `create_timeoutq_event` calls in [kernel.c](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/kernel.c#L48-L62), then your solution is good! 
+- Your solution's output should be something similar to these:
+    - ![](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/images_used_by_README/minicom1.png)
+    - ![](https://github.com/sklaw/enee447project2_hw_template_Shuangqi_sessions/blob/master/images_used_by_README/minicom2.png)
 
 
 ## Concepts to Know (Written by Grant Hoover)
