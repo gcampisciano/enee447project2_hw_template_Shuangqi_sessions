@@ -1,10 +1,7 @@
-
-enum debug_levels {
-	DEBUG_LOW,
-	DEBUG_MED,
-	DEBUG_HI,
-	DEBUG_NONE
-};
+#define DEBUG_LOW 0
+#define DEBUG_MED 1
+#define DEBUG_HI 2
+#define DEBUG_NONE 3
 
 //
 // set this to the level you want to print out --
@@ -13,7 +10,7 @@ enum debug_levels {
 #define DEBUG_LEVEL DEBUG_LOW
 
 extern void	dont_call_directly( void *, char *, unsigned long);
-#if (DEBUGLEVEL == DEBUG_NONE)
+#if DEBUG_LEVEL == DEBUG_NONE
 #define debug(x,y,z);	
 #else
 #define debug(x,y,z);	if (x >= DEBUG_LEVEL) { dont_call_directly(GETPC(),y,z); }
