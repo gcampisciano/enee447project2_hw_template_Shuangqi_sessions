@@ -3,14 +3,17 @@
 #include "led.h"
 #include "time.h"
 #include "callout.h"
+#include "log.h"
 
 void do_hex( struct event *ep )
 {
+    	log("do_hex called\n", NOVAL);
 	uart_put32x(ep->data.num); uart_puts("\n");
 }
 
 void do_blink( struct event *ep )
 {
+    	log("do_blink called\n", NOVAL);
 #if 1	// change this to 0 to try the more complex approach
 	blink_led_stall(ep->data.num);
 #else
@@ -30,5 +33,6 @@ void do_blink( struct event *ep )
 
 void do_string( struct event *ep )
 {
+    	log("do_string called\n", NOVAL);
 	uart_putns(ep->data.name, 4); uart_puts("\n");
 }
