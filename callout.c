@@ -59,7 +59,8 @@ init_timeoutq()
 int
 bring_timeoutq_current()
 {
-	// your code goes here
+	uint64_t now_time = get_time();
+	return now_time - then_usec;
 }
 
 
@@ -71,7 +72,7 @@ bring_timeoutq_current()
 void
 create_timeoutq_event(int timeout, int repeat, pfv_t function, namenum_t data)
 {
-	// your code goes here
+	
 }
 
 
