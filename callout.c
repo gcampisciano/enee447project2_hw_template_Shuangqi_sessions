@@ -76,8 +76,8 @@ create_timeoutq_event(int timeout, int repeat, pfv_t function, namenum_t data)
 	struct event *ep = LL_POP(freelist);
 	// initialize ep
 	ep->timeout = timeout;
-	ep->repeat = repeat;
-	ep->pfv_t = function;
+	ep->repeat = repeat_interval;
+	ep->go = function;
 	ep->data = data;
 	// add event to end of the list
 	LL_APPEND(timeoutq, ep);
