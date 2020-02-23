@@ -110,9 +110,9 @@ handle_timeoutq_event( )
 			
 		// If repeat add to timeoutq else add to freelist
 		if(tmp->repeat_interval > 0) {
-			LL_APPEND(timeoutq, tmp);
+			LL_PUSH(timeoutq, tmp);
 		} else {
-			LL_APPEND(freelist, tmp);
+			LL_PUSH(freelist, tmp);
 		}
 		return 1;
 	} else {
