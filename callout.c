@@ -61,7 +61,7 @@ bring_timeoutq_current()
 {
 	// get current time and return difference subtracted from head of timeoutq 
 	uint64_t now_time = get_time();
-	return now_time - then_usec;
+	return &(LL_FIRST(timeoutq))->timeout - (now_time - then_usec);
 }
 
 
@@ -101,7 +101,7 @@ handle_timeoutq_event( )
 	
 	//iterate through the list and check if any events have expired
 	struct event *ep;
-	LL_EACH(timeoutq, ep, struct event) {
+	LL_EACH(timeoutq, ep, struct event) { // Issue is here try removing the Iteration
 		if(time > ep->timeout) { 
 			//remove from list
 			struct event *tmp = LL_DETACH(timeoutq, ep);
