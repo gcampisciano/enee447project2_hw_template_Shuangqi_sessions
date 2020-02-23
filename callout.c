@@ -100,21 +100,19 @@ handle_timeoutq_event( )
 	uint64_t time = bring_timeoutq_current();
 	
 	//iterate through the list and check if any events have expired
-	struct event *ep;
-	LL_EACH(timeoutq, ep, struct event) { // Issue is here try removing the Iteration
-		if(time > ep->timeout) { 
-			//remove from list
-			struct event *tmp = LL_DETACH(timeoutq, ep);
+	struct event *ep = LL_FIRST(timeoutq);
+	if(time > ep->timeout) {
+		//Remove head from list
+		struct ep *tmp = LL_POP(timeoutq) 
 			
-			// execute event
-			tmp->go(tmp->data);
+		// execute event
+		tmp->go(tmp->data);
 			
-			// If repeat add to timeoutq else add to freelist
-			if(tmp->repeat_interval > 0) {
-				LL_APPEND(timeoutq, tmp);
-			} else {
-				LL_APPEND(freelist, tmp);
-			}
+		// If repeat add to timeoutq else add to freelist
+		if(tmp->repeat_interval > 0) {
+			LL_APPEND(timeoutq, tmp);
+		} else {
+			LL_APPEND(freelist, tmp);
 		}
 	}
 	if(LL_IS_EMPTY(timeoutq)) {
