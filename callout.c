@@ -60,8 +60,9 @@ int
 bring_timeoutq_current()
 {
 	// get current time and return difference subtracted from head of timeoutq 
-	uint64_t now_time = get_time();
-	return &(LL_FIRST(timeoutq))->timeout - (now_time - then_usec);
+	uint64_t time = get_time() - then_usec;
+	struct event *ep = LL_FIRST(timeoutq);
+	return ep->timeout - time;
 }
 
 
@@ -96,12 +97,11 @@ create_timeoutq_event(int timeout, int repeat, pfv_t function, namenum_t data)
 int
 handle_timeoutq_event( )
 {
-	//get current time
+	// get time from head of list
 	uint64_t time = bring_timeoutq_current();
 	
-	//iterate through the list and check if any events have expired
-	struct event *ep = LL_FIRST(timeoutq);
-	if(time > ep->timeout) {
+	// if time has expired
+	if(time < 0) {
 		//Remove head from list
 		struct ep *tmp = LL_POP(timeoutq) 
 			
@@ -114,11 +114,9 @@ handle_timeoutq_event( )
 		} else {
 			LL_APPEND(freelist, tmp);
 		}
-	}
-	if(LL_IS_EMPTY(timeoutq)) {
-		return 0;
-	} else {
 		return 1;
+	} else {
+		return 0;
 	}
 }
 
