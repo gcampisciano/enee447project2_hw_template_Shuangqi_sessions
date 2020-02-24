@@ -65,6 +65,10 @@ bring_timeoutq_current()
 	struct event *ep = LL_FIRST(timeoutq);
 	uint64_t diff = ep->timeout - time;
 	
+	// update then_usec and event timeout
+	then_usec = now_time;
+	ep->timeout = diff;
+	
 	if(diff > MAX_WAIT) {
 		return MAX_WAIT;
 	} else {
@@ -110,17 +114,17 @@ handle_timeoutq_event( )
 	// if time has expired
 	if(time < 0) {
 		//Remove head from list
-		struct event *tmp = LL_POP(timeoutq) 
+		struct event *ep = LL_POP(timeoutq) 
 			
 		// execute event
-		tmp->go(tmp->data);
+		ep->go(ep);
 			
 		// If repeat add to timeoutq else add to freelist
-		if(tmp->repeat_interval > 0) {
-			tmp->timeout = tmp->repeat_interval;
-			LL_APPEND(timeoutq, tmp);
+		if(ep->repeat_interval > 0) {
+			ep->timeout = ep->repeat_interval;
+			LL_APPEND(timeoutq, ep);
 		} else {
-			LL_APPEND(freelist, tmp);
+			LL_APPEND(freelist, ep);
 		}
 		return 1;
 	} else {
