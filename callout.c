@@ -12,6 +12,7 @@
 
 
 #define MAX_EVENTS	256
+#define MAX_WAIT	5 * ONE_SEC
 struct event queue[ MAX_EVENTS ];
 
 // list anchors -- important, but ignore them; they are never used directly
@@ -62,7 +63,13 @@ bring_timeoutq_current()
 	// get current time and return difference subtracted from head of timeoutq 
 	uint64_t time = get_time() - then_usec;
 	struct event *ep = LL_FIRST(timeoutq);
-	return ep->timeout - time;
+	uint64_t diff = ep->timeout - time;
+	
+	if(diff > MAX_WAIT) {
+		return MAX_WAIT;
+	} else {
+		return diff;
+	}
 }
 
 
