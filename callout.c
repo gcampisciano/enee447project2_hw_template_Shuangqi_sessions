@@ -61,9 +61,9 @@ int
 bring_timeoutq_current()
 {
 	// get current time and return difference subtracted from head of timeoutq 
-	uint64_t time = get_time() - then_usec;
+	uint64_t now_time = get_time() - then_usec;
 	struct event *ep = LL_FIRST(timeoutq);
-	uint64_t diff = ep->timeout - time;
+	uint64_t diff = ep->timeout - now_time;
 	
 	// update then_usec and event timeout
 	then_usec = now_time;
