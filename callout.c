@@ -110,7 +110,7 @@ handle_timeoutq_event( )
 	// if time has expired
 	if(time < 0) {
 		//Remove head from list
-		struct ep *tmp = LL_POP(timeoutq) 
+		struct event *tmp = LL_POP(timeoutq) 
 			
 		// execute event
 		tmp->go(tmp->data);
